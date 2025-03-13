@@ -5,8 +5,6 @@ using NS.Identidade.API.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
-//builder.Configuration.AddAppsettingsEnvironment(builder.Environment);
-
 builder.Services.AddIdentityConfiguration(builder.Configuration);
 
 builder.Services.AddApiConfiguration(builder.Configuration);
