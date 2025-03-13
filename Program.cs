@@ -1,7 +1,11 @@
+using System.Collections;
 using NS.APICore.Extensions;
 using NS.Identidade.API.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
+
+Console.WriteLine($"Ambiente: {builder.Environment.EnvironmentName}");
+Console.WriteLine($"DefaultConnection: {config["ConnectionStrings:DefaultConnection"]}");
 
 builder.Configuration.AddAppsettingsEnvironment(builder.Environment);
 
