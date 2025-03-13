@@ -14,7 +14,7 @@ namespace NS.Identidade.API.Controllers
         private readonly AuthenticationService _authenticationService;
         private readonly IMessageBus _bus;
 
-        public AuthController(AuthenticationService authenticationService, IMessageBus bus
+        public AuthController(AuthenticationService authenticationService, IMessageBus bus)
         {
             _authenticationService = authenticationService;
             _bus = bus;
