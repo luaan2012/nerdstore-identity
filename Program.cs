@@ -1,6 +1,5 @@
 using NS.APICore.Extensions;
 using NS.Identidade.API.Configuration;
-using NS.Identidade.API.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
