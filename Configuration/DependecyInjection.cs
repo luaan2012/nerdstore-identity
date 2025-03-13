@@ -7,8 +7,6 @@ namespace NS.Identidade.API.Configuration
     {
         public static void AddDependecyInjection(this IServiceCollection services)
         {
-
-
             services.AddScoped<AuthenticationService>();
 
             services.AddScoped<IAspNetUser, AspNetUser>();

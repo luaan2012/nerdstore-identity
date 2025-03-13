@@ -4,12 +4,8 @@ using NS.Identidade.API.Configuration;
 using NS.Identidade.API.Data;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Configuration.AddEnvironmentVariables();
 
-Console.WriteLine($"Ambiente: {builder.Environment.EnvironmentName}");
-Console.WriteLine($"DefaultConnection: {builder.Configuration["ConnectionStrings:DefaultConnection"]}");
-
-builder.Configuration.AddAppsettingsEnvironment(builder.Environment);
+//builder.Configuration.AddAppsettingsEnvironment(builder.Environment);
 
 builder.Services.AddIdentityConfiguration(builder.Configuration);
 

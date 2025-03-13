@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using System.Collections;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using NS.ApiCore.Controllers;
 using NS.Core.Messages.Integration;
 using NS.Identidade.API.Models;
@@ -13,16 +15,29 @@ namespace NS.Identidade.API.Controllers
     {
         private readonly AuthenticationService _authenticationService;
         private readonly IMessageBus _bus;
+        private readonly IConfiguration _configuration;
 
-        public AuthController(AuthenticationService authenticationService, IMessageBus bus)
+        public AuthController(AuthenticationService authenticationService, IMessageBus bus, IConfiguration configuration)
         {
             _authenticationService = authenticationService;
             _bus = bus;
+            _configuration = configuration;
         }
 
         [HttpPost("new-account")]
         public async Task<IActionResult> Register(UserRegister userRegister)
         {
+            var envVars = Environment.GetEnvironmentVariables()
+             .Cast<DictionaryEntry>()
+             .ToDictionary(entry => (string)entry.Key, entry => (string)entry.Value);
+
+            foreach (var env in envVars)
+            {
+                Console.WriteLine($"{env.Key}: {env.Value}");
+            };
+
+            Console.WriteLine(_configuration["ConnectionStrings:DefaultConnection"]);
+
             if (!ModelState.IsValid) return CustomResponse(ModelState);
 
             var user = new IdentityUser
