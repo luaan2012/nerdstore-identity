@@ -80,7 +80,7 @@ namespace NS.Identidade.API.Services
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var currentIssuer =
-                $"{_aspNetUser.ObterHttpContext().Request.Scheme}://{_aspNetUser.ObterHttpContext().Request.Host}";
+                $"https://{_aspNetUser.ObterHttpContext().Request.Host}";
             var key = _jwksService.GetCurrent();
             var token = tokenHandler.CreateToken(new SecurityTokenDescriptor
             {
